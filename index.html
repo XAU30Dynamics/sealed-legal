@@ -3,101 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sealed — Privacy Policy</title>
+<title>SEALED — Earn the close</title>
+<meta name="description" content="SEALED is a fitness app with one ritual: at the end of each day you press a wax seal onto it, and the impression forms only as complete as you earned. Train, fuel, base. One seal a day. Two people, one streak.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-  :root {
-    --bg: #0c0d0f; --panel: #131417; --line: #26292f;
-    --text: #e8e9eb; --dim: #8b8f98; --lime: #c8f04a;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 16px/1.65 -apple-system, "Helvetica Neue", Arial, sans-serif;
-  }
-  main { max-width: 640px; margin: 0 auto; padding: 48px 22px 80px; }
-  h1 {
-    font-size: 15px; letter-spacing: 4px; text-transform: uppercase;
-    font-weight: 800; color: var(--lime); margin: 0 0 4px;
-  }
-  .sub { color: var(--dim); font-size: 13px; margin-bottom: 40px; }
-  h2 {
-    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--dim); border-top: 1px solid var(--line);
-    padding-top: 28px; margin: 36px 0 10px;
-  }
-  p, li { color: var(--text); }
-  li { margin-bottom: 6px; }
-  .plain { color: var(--dim); }
-  a { color: var(--lime); text-decoration: none; }
-  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 14px; color: var(--dim); }
+  :root { --bg:#0c0d0f; --panel:#131417; --line:#26292f; --text:#e8e9eb; --dim:#8b8f98; --lime:#c8f04a; --wax:#8e2a33; --waxdeep:#5c1b22; --bone:#e6dfd3; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 -apple-system,"Helvetica Neue",Arial,sans-serif; }
+  main { max-width:560px; margin:0 auto; padding:72px 22px 80px; text-align:center; }
+  .eyebrow { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.45em; color:var(--lime); text-transform:uppercase; }
+  .seal { width:168px; height:168px; border-radius:50%; margin:36px auto 30px; position:relative; background:radial-gradient(circle at 50% 45%, var(--wax), var(--waxdeep) 70%); box-shadow:0 18px 50px -20px rgba(0,0,0,.8), inset 0 0 40px rgba(0,0,0,.35); display:grid; place-items:center; }
+  .seal::before { content:""; position:absolute; inset:16px; border-radius:50%; border:5px solid var(--bone); border-right-color:transparent; transform:rotate(-30deg); }
+  .seal span { font-family:Georgia,"Times New Roman",serif; font-weight:900; font-size:64px; color:var(--bone); text-shadow:0 2px 2px rgba(0,0,0,.6); }
+  h1 { font-family:"Archivo",system-ui,sans-serif; font-weight:800; font-size:44px; letter-spacing:-.01em; text-transform:uppercase; margin:0 0 14px; line-height:1; }
+  p { color:var(--dim); max-width:44ch; margin:0 auto 14px; }
+  .soon { display:inline-block; margin-top:26px; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.2em; color:var(--text); border:1px solid var(--line); border-radius:999px; padding:10px 18px; text-transform:uppercase; }
+  .arcs { display:flex; justify-content:center; gap:26px; margin:34px 0 0; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.25em; color:var(--dim); }
+  footer { margin-top:64px; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.14em; color:var(--dim); }
+  footer a { color:var(--dim); text-decoration:none; }
+  footer a:hover, footer a:focus-visible { color:var(--lime); outline:none; }
+  footer span { margin:0 8px; }
 </style>
 </head>
 <body>
 <main>
-  <h1>Sealed</h1>
-  <p class="sub">Privacy policy · effective 3 September 2026</p>
-
-  <p>Sealed is built local-first. Your day — your sets, your meals, your
-  Health signals, your seals — lives on your phone. This page says exactly
-  what ever leaves it, and it's a short page.</p>
-
-  <h2>On your device, and only there</h2>
-  <ul>
-    <li>Your plan, workouts, logged sets, training notes, meals and supplements.</li>
-    <li>Everything read from Apple Health (steps, sleep, workouts and any
-        signals you choose). Health data is read on-device with your
-        permission and is <strong>never transmitted anywhere</strong>.</li>
-    <li>Your full day history and every sealed day.</li>
-  </ul>
-  <p class="plain">No account is needed for any of this. If you never touch
-  the pact, Sealed sends nothing at all.</p>
-
-  <h2>If you join a pact</h2>
-  <p>The pact — sealing alongside one partner — is optional and needs an
-  account, created with Sign in with Apple. When you use it, we store:</p>
-  <ul>
-    <li><strong>Your display name</strong> (the name you choose — never your
-        email; we use Apple's private sign-in and don't ask for it) and, if
-        you set one, your profile photo, visible only to your partner.</li>
-    <li><strong>Your daily result</strong> when you seal: the date, the
-        percentage earned, and whether you beat your plan. Never the detail
-        behind it — no sets, no meals, no Health data.</li>
-    <li><strong>Your pact membership</strong> — who you're paired with, by
-        invite code you share yourself — and the short messages and pumps
-        you send each other inside it.</li>
-    <li><strong>Your weekly review</strong> — once a week, a summary of your
-        sealed results (percentages, lifts by name and weight, and any training
-        notes you wrote) is sent to Anthropic's Claude to write your review.
-        Only the finished words are kept. No Health data is included.</li>
-  </ul>
-  <p>This is stored with Supabase in the EU (Ireland) and is visible only to
-  you and your pact partner. Sealed days can never be edited — by you, by
-  your partner, or by us.</p>
-
-  <h2>Subscription</h2>
-  <p>Payment is handled entirely by Apple through your Apple ID. We never see
-  your card, your address or your Apple ID email. Your subscription status is
-  read from Apple on your phone and is not stored on our servers.</p>
-
-  <h2>What we don't do</h2>
-  <ul>
-    <li>No advertising, no trackers, no selling or sharing of data.</li>
-    <li>No third-party analytics.</li>
-    <li>No food database, no location, no contacts.</li>
-  </ul>
-
-  <h2>Deleting your data</h2>
-  <p>Settings → <code>HOLD TO DELETE ACCOUNT</code> (at the foot of the page)
-  deletes your account and everything stored on our servers — profile, photo,
-  pact memberships, messages, reviews and all synced day results —
-  immediately and permanently. Your local data stays on your phone; deleting
-  the app removes that too.</p>
-
-  <h2>Contact</h2>
-  <p>Questions: <a href="mailto:hello@sealedapp.co.uk">hello@sealedapp.co.uk</a></p>
-
-  <p class="plain" style="margin-top:40px">If this policy changes, the change
-  and its date will appear here first.</p>
+  <div class="eyebrow">Sealed</div>
+  <div class="seal" aria-hidden="true"><span>S</span></div>
+  <h1>Earn the close</h1>
+  <p>At the end of each day you press a wax seal onto it. The impression forms only as complete as you earned. Train, fuel, base — one seal a day.</p>
+  <p>Two people, one streak. It only advances when you both hold.</p>
+  <div class="arcs"><span>TRAIN</span><span>FUEL</span><span>BASE</span></div>
+  <div class="soon">Coming to the App Store</div>
+  <footer>
+    <a href="privacy.html">Privacy</a><span>·</span><a href="support.html">Support</a><span>·</span><a href="mailto:hello@sealedapp.co.uk">hello@sealedapp.co.uk</a>
+  </footer>
 </main>
 </body>
 </html>
