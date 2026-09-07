@@ -98,7 +98,7 @@
   .store .lines { display:flex; flex-direction:column; align-items:flex-start; line-height:1.05; }
   .store .lines small { font-size:10px; letter-spacing:.02em; }
   .store .lines b { font-size:19px; font-weight:800; letter-spacing:-.01em; }
-  .store.glow { box-shadow:0 0 0 4px rgba(224,182,74,.16), 0 18px 40px -18px rgba(224,182,74,.55); }
+  .store.glow-off { box-shadow:0 0 0 4px rgba(224,182,74,.16), 0 18px 40px -18px rgba(224,182,74,.55); }
   .devices { display:inline-flex; align-items:center; gap:10px; }
   .devices i { width:4px; height:4px; border-radius:50%; background:var(--line2); display:inline-block; }
 
@@ -173,12 +173,8 @@
   }
 </style>
 
-<div class="grain" aria-hidden="true"></div>
 
-<div class="bar" id="bar" aria-hidden="true">
-  <a class="mark" href="#top"><i></i>Sealed</a>
-  <a class="go" href="https://apps.apple.com/gb/app/sealed/id6807351225"><svg viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>App Store</a>
-</div>
+
 
 <main id="top">
   <section class="hero wrap">
@@ -250,7 +246,7 @@
           <div class="n"><b>6</b><small>REPS</small></div>
           <div class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
         </div>
-        <div class="shot wide"><img src="assets/wrist.jpg" width="460" height="1000" alt="TRAIN on iPhone with the set on Apple Watch: 80 kg × 8, at target, tick" loading="lazy"></div>
+        <div class="shot wide"><img src="../assets/wrist.jpg" width="460" height="1000" alt="TRAIN on iPhone with the set on Apple Watch: 80 kg × 8, at target, tick" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -263,7 +259,7 @@
         <h2>It fills itself.</h2>
         <p>Pick the signals that matter to you — steps, sleep, active energy, stand hours, water, mindful minutes. Apple Health feeds them. <strong>Nothing to type, ever.</strong> A ring for each, a target for each, and the shortfall in plain units: “Sleep 1.1 short”.</p>
       </div>
-      <div class="shot"><img src="assets/base.jpg" width="427" height="900" alt="BASE in Sealed: six Apple Health signals as rings" loading="lazy"></div>
+      <div class="shot"><img src="../assets/base.jpg" width="427" height="900" alt="BASE in Sealed: six Apple Health signals as rings" loading="lazy"></div>
     </div>
   </section>
 
@@ -275,7 +271,7 @@
         <h2>See the work.</h2>
         <p>Body, fuel, strength. Weight and the tape. Eaten against target. Volume by week, a line for every lift. <strong>Every chart starts where your data starts</strong> — and it lives on your phone, not on a dashboard you have to visit.</p>
       </div>
-      <div class="shot"><img src="assets/progress.jpg" width="427" height="900" alt="PROGRESS in Sealed: fuel eaten against target and the body line" loading="lazy"></div>
+      <div class="shot"><img src="../assets/progress.jpg" width="427" height="900" alt="PROGRESS in Sealed: fuel eaten against target and the body line" loading="lazy"></div>
     </div>
   </section>
 
@@ -288,7 +284,7 @@
         <p><strong>Optional.</strong> Pair with one person by invite code and your streak only advances when you both hold. Send a pump when they need one, a message when they don’t, and see each other’s seals side by side.</p>
         <p>Every Sunday, a short coach review of your week — the lifts, the plate, the seals — <strong>in a few honest words.</strong> Solo or paired.</p>
       </div>
-      <div class="shot"><img src="assets/pact.jpg" width="427" height="900" alt="This week in Sealed: the pact and the duel" loading="lazy"></div>
+      <div class="shot"><img src="../assets/pact.jpg" width="427" height="900" alt="This week in Sealed: the pact and the duel" loading="lazy"></div>
     </div>
   </section>
 
@@ -418,10 +414,7 @@
   again.addEventListener('click', reopen);
 
   // ---------- the bar, once the hero's badge has gone ----------
-  var bar = document.getElementById('bar'), cta = document.getElementById('cta');
-  new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) { bar.classList.toggle('show', !en.isIntersecting && en.boundingClientRect.top < 0); });
-  }, { threshold: 0 }).observe(cta);
+  
 
   // ---------- the arcs close as they come into view, one after another ----------
   var arcs = document.querySelectorAll('#arcs .arc');
@@ -462,7 +455,7 @@
   // ---------- the stamp lands at the close ----------
   var stampEl = document.getElementById('stamp'), store2 = document.getElementById('store2');
   if (!reduced) {
-    stampEl.classList.add('arm');
+    
     var landed = false;
     var so = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
