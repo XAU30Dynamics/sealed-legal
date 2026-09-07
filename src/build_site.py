@@ -6,7 +6,7 @@
 import base64, math, os, shutil
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
-HERE = os.path.dirname(os.path.abspath(__file__))  # run from src/: writes ../index.html and ../assets/
+HERE = os.path.dirname(os.path.abspath(__file__))
 TMPL = open(os.path.join(HERE, "site.tmpl.html"), encoding="utf-8").read()
 STORE = "https://apps.apple.com/gb/app/sealed/id6807351225"
 APPLE = ("M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 "
