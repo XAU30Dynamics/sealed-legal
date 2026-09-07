@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sealed — Workout habit tracker. Earn the close.</title>
+<meta name="description" content="Sealed is the workout habit tracker with one honest ritual: press a wax seal on your day, and the impression only forms as complete as you earned. Train, fuel and base. iPhone and Apple Watch.">
+<link rel="canonical" href="https://sealedapp.co.uk/">
+<meta name="theme-color" content="#0c0d0f">
+<meta name="apple-itunes-app" content="app-id=6807351225">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sealed">
+<meta property="og:title" content="Sealed — Earn the close">
+<meta property="og:description" content="One wax seal a night. The impression only forms as complete as you earned. Workout habit tracker for iPhone and Apple Watch.">
+<meta property="og:url" content="https://sealedapp.co.uk/">
+<meta property="og:image" content="https://sealedapp.co.uk/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sealed — Earn the close">
+<meta name="twitter:description" content="One wax seal a night. The impression only forms as complete as you earned.">
+<meta name="twitter:image" content="https://sealedapp.co.uk/assets/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230c0d0f'/%3E%3Ccircle cx='32' cy='32' r='22' fill='%237a2430' stroke='%23e0b64a' stroke-width='3'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-weight='900' font-size='30' fill='%23e0b64a'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800&family=JetBrains+Mono:wght@400;600&display=swap">
+</head>
+<body>
+<style>
+  :root {
+    --bg:#0c0d0f; --panel:#131417; --panel2:#181a1e; --line:#26292f; --line2:#33373f; --text:#e8e9eb; --dim:#8b8f98;
+    --lime:#c8f04a; --amber:#f0a04a; --red:#f04a5e;
+    --wax:#8e2a33; --waxhi:#b03a46; --waxdeep:#5c1b22; --bone:#e6dfd3; --gold:#e0b64a; --brass:#9a7a3a;
+    --display:"Archivo", "Helvetica Neue", Arial, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --measure:46ch;
+  }
+  * { box-sizing:border-box; }
+  html { background:var(--bg); scroll-behavior:smooth; overflow-x:hidden; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.55 var(--display); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  a { color:inherit; }
+  :focus-visible { outline:2px solid var(--lime); outline-offset:3px; }
+  img { max-width:100%; }
+
+  /* atmosphere: a breath of grain, a warm glow behind the wax */
+  .grain { position:fixed; inset:0; pointer-events:none; z-index:20; opacity:.035;
+           background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .glow { position:absolute; left:50%; top:50%; width:140%; height:140%; transform:translate(-50%,-50%); border-radius:50%; pointer-events:none;
+          background:radial-gradient(circle, rgba(142,42,51,.22), rgba(142,42,51,.06) 45%, rgba(12,13,15,0) 70%); }
+
+  .eyebrow { font-family:var(--mono); font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:var(--lime); display:inline-flex; align-items:center; gap:14px; }
+  .eyebrow.dim { color:var(--dim); }
+  .eyebrow.dim::before { content:""; width:18px; height:1px; background:var(--brass); }
+  h1, h2, .hook { font-family:var(--display); font-weight:800; text-transform:uppercase; letter-spacing:-.02em; line-height:.92; margin:0; text-wrap:balance; }
+  h1 { font-size:clamp(76px, 19vw, 184px); letter-spacing:-.04em; }
+  .hook { font-size:clamp(26px, 5.4vw, 44px); color:var(--text); }
+  h2 { font-size:clamp(34px, 5.4vw, 60px); }
+  p { margin:0; color:var(--dim); max-width:var(--measure); }
+  p strong { color:var(--text); font-weight:500; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 22px; }
+  .mono { font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); font-variant-numeric:tabular-nums; }
+  .mono b { color:var(--text); font-weight:600; }
+
+  /* the bar that follows once the hero is gone */
+  .bar { position:fixed; top:0; left:0; right:0; z-index:15; display:flex; align-items:center; justify-content:space-between; padding:10px 18px;
+         background:rgba(12,13,15,.94); border-bottom:1px solid var(--line);
+         transform:translateY(-100%); transition:transform .4s cubic-bezier(.2,.8,.2,1); }
+  .bar.show { transform:none; }
+  .bar .mark { font-family:var(--display); font-weight:800; letter-spacing:-.02em; text-transform:uppercase; font-size:18px; text-decoration:none; display:inline-flex; align-items:center; gap:10px; }
+  .bar .mark i { width:12px; height:12px; border-radius:50%; background:radial-gradient(circle at 45% 40%, var(--waxhi), var(--waxdeep) 75%); box-shadow:0 0 0 1.5px var(--gold); display:inline-block; }
+  .bar .go { font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; color:var(--bg); background:var(--text); padding:9px 14px; border-radius:999px; display:inline-flex; align-items:center; gap:8px; }
+  .bar .go svg { width:12px; height:12px; fill:var(--bg); }
+
+  /* ---------- hero ---------- */
+  .hero { text-align:center; padding:56px 0 36px; display:flex; flex-direction:column; align-items:center; gap:14px; position:relative; overflow:hidden; }
+  .hero h1 { margin-top:4px; animation:settle 1.1s cubic-bezier(.2,.9,.2,1) both; }
+  @keyframes settle { from { transform:scale(1.045); opacity:.55; } to { transform:none; opacity:1; } }
+  .hero .hook { margin-top:-2px; }
+  .hero .lede { margin:6px auto 0; font-size:17px; max-width:40ch; }
+  .sealbox { position:relative; width:min(360px, 88vw); aspect-ratio:1; margin:22px auto 0; touch-action:none; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; cursor:pointer; border-radius:50%; }
+  .sealbox canvas { position:relative; width:100%; height:100%; display:block; border-radius:50%; }
+  .arc-label { position:absolute; font-family:var(--mono); font-size:10px; letter-spacing:.34em; color:var(--dim); pointer-events:none; white-space:nowrap; transition:color .5s; }
+  .arc-label.train { left:0; top:50%; transform:translate(-50%, -50%) rotate(-90deg); }
+  .arc-label.fuel { right:0; top:50%; transform:translate(50%, -50%) rotate(90deg); }
+  .arc-label.base { left:50%; bottom:0; transform:translate(-50%, 50%); }
+  .sealbox.done .arc-label { color:var(--brass); }
+  .under { display:flex; flex-direction:column; align-items:center; gap:14px; margin-top:22px; }
+  .hint { font-family:var(--mono); font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:var(--dim); min-height:1.6em; transition:color .3s; }
+  .hint.live { color:var(--text); }
+  .hint.done { color:var(--gold); }
+  .again { font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--dim); background:none; border:0; padding:0; cursor:pointer; opacity:0; transition:opacity .4s; height:0; overflow:hidden; }
+  .again.show { opacity:1; height:auto; padding:2px 10px 6px; }
+  .cta { display:flex; flex-direction:column; align-items:center; gap:12px; margin-top:6px; }
+  .store { display:inline-flex; align-items:center; gap:12px; background:var(--text); color:#0c0d0f; text-decoration:none; padding:12px 22px 12px 18px; border-radius:12px; transition:transform .25s, box-shadow .25s; }
+  .store:hover { transform:translateY(-1px); }
+  .store svg { width:26px; height:26px; fill:#0c0d0f; }
+  .store .lines { display:flex; flex-direction:column; align-items:flex-start; line-height:1.05; }
+  .store .lines small { font-size:10px; letter-spacing:.02em; }
+  .store .lines b { font-size:19px; font-weight:800; letter-spacing:-.01em; }
+  .store.glow { box-shadow:0 0 0 4px rgba(224,182,74,.16), 0 18px 40px -18px rgba(224,182,74,.55); }
+  .devices { display:inline-flex; align-items:center; gap:10px; }
+  .devices i { width:4px; height:4px; border-radius:50%; background:var(--line2); display:inline-block; }
+
+  /* ---------- beats ---------- */
+  .beat { padding:88px 0; border-top:1px solid var(--line); }
+  .beat .grid { display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
+  .beat .copy { display:flex; flex-direction:column; gap:18px; }
+  .beat .copy p { font-size:17px; }
+  .shot { position:relative; width:min(340px, 84vw); margin:0 auto; border-radius:34px 34px 0 0; overflow:hidden; max-height:540px; box-shadow:0 30px 40px -20px rgba(0,0,0,.6); }
+  .shot.wide { width:min(420px, 92vw); border-radius:0; }
+  .shot img { display:block; width:100%; height:auto; }
+  .shot::after { content:""; position:absolute; left:0; right:0; bottom:0; height:150px; background:linear-gradient(to bottom, rgba(12,13,15,0), var(--bg)); }
+  .shot.will { transform:translateY(28px); transition:transform 1.1s cubic-bezier(.2,.8,.2,1); }
+  .shot.will.in { transform:none; }
+  @media (min-width: 820px) {
+    .beat .grid { grid-template-columns:1fr 1fr; gap:64px; }
+    .beat.flip .grid > .copy { order:2; }
+    .shot { width:360px; max-height:620px; }
+    .shot.wide { width:460px; max-height:660px; }
+  }
+
+  /* arcs beat */
+  .arcs { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+  .arc { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px 16px 16px; display:flex; flex-direction:column; align-items:flex-start; gap:12px; transition:border-color .8s; }
+  .arc.lit { border-color:rgba(200,240,74,.35); }
+  .arc svg { width:64px; height:64px; flex:none; }
+  .arc .ring-bg { stroke:var(--line); }
+  .arc .ring-fg { stroke:var(--wax); stroke-linecap:round; transition:stroke-dashoffset 2.4s cubic-bezier(.3,.7,.2,1), stroke .8s; }
+  .arc:nth-child(2) .ring-fg { transition-delay:.35s; }
+  .arc:nth-child(3) .ring-fg { transition-delay:.7s; }
+  .arc.lit .ring-fg { stroke:var(--lime); }
+  .arc .name { font-family:var(--mono); font-size:11px; letter-spacing:.32em; color:var(--text); }
+  .arc .pct { font-family:var(--mono); font-weight:600; font-size:22px; letter-spacing:-.02em; font-variant-numeric:tabular-nums; transition:color .8s; }
+  .arc.lit .pct { color:var(--lime); }
+  .arc p { font-size:13px; line-height:1.5; }
+  .arc .txt { display:flex; flex-direction:column; gap:4px; }
+  @media (max-width: 600px) { .arcs { grid-template-columns:1fr; } .arc { flex-direction:row; align-items:center; gap:16px; } }
+
+  /* the set that ticks itself */
+  .trainviz { position:relative; }
+  .setrow { display:flex; align-items:center; gap:14px; background:var(--panel2); border:1px solid var(--line2); border-radius:14px; padding:12px 14px; width:min(340px, 88vw); margin:0 auto 18px;
+            box-shadow:0 24px 40px -24px rgba(0,0,0,.9); transition:border-color .5s, box-shadow .5s; font-variant-numeric:tabular-nums; }
+  .setrow.on { border-color:rgba(200,240,74,.55); box-shadow:0 24px 40px -24px rgba(0,0,0,.9), 0 0 0 3px rgba(200,240,74,.08); }
+  .setrow .l { display:flex; flex-direction:column; gap:3px; flex:1; min-width:0; }
+  .setrow .l small { font-family:var(--mono); font-size:9px; letter-spacing:.18em; color:var(--dim); white-space:nowrap; }
+  .setrow .l b { font-family:var(--mono); font-size:9px; letter-spacing:.18em; color:var(--lime); font-weight:600; white-space:nowrap; }
+  .setrow .n { display:flex; flex-direction:column; align-items:center; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:6px 10px; min-width:56px; }
+  .setrow .n b { font-family:var(--mono); font-weight:600; font-size:17px; line-height:1.1; }
+  .setrow .n small { font-family:var(--mono); font-size:8px; letter-spacing:.2em; color:var(--dim); }
+  .setrow .x { font-family:var(--mono); color:var(--dim); }
+  .setrow .tick { width:34px; height:34px; border-radius:50%; border:1.5px solid var(--line2); display:grid; place-items:center; flex:none; transition:background .35s, border-color .35s; }
+  .setrow .tick svg { width:18px; height:18px; fill:none; stroke:var(--bg); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:24; stroke-dashoffset:24; transition:stroke-dashoffset .35s ease-out .1s; }
+  .setrow.on .tick { background:var(--lime); border-color:var(--lime); }
+  .setrow.on .tick svg { stroke-dashoffset:0; }
+  @media (min-width: 820px) { .setrow { position:absolute; left:-48px; top:56px; z-index:2; margin:0; } .trainviz .shot { margin-left:auto; } }
+
+  /* close */
+  .close { text-align:center; padding:104px 0 56px; border-top:1px solid var(--line); display:flex; flex-direction:column; align-items:center; gap:20px; position:relative; }
+  .close h2 { font-size:clamp(44px, 9vw, 96px); }
+  .stamp { width:108px; height:108px; border-radius:50%; margin:6px 0 2px; position:relative; display:grid; place-items:center;
+           background:radial-gradient(circle at 45% 40%, #7a2430, #3d1016 75%); border:3px solid var(--gold);
+           box-shadow:0 22px 44px -20px rgba(0,0,0,.95), inset 0 0 20px rgba(0,0,0,.5); transition:transform .38s cubic-bezier(.2,1.4,.3,1), opacity .3s; }
+  .stamp span { font-family:Georgia, "Times New Roman", serif; font-weight:900; font-size:54px; color:var(--gold); text-shadow:0 2px 2px rgba(0,0,0,.6); }
+  .stamp.arm { opacity:0; }
+  .stamp.land { transform:scale(1); opacity:1; }
+  footer { border-top:1px solid var(--line); padding:26px 0 44px; display:flex; flex-wrap:wrap; justify-content:center; gap:10px 26px; font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--dim); text-transform:uppercase; }
+  footer a { text-decoration:none; color:var(--dim); }
+  footer a:hover { color:var(--lime); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .store, .arc .ring-fg, .shot.will, .bar, .stamp { transition:none; } .shot.will { transform:none; } .hero h1 { animation:none; }
+  }
+</style>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="bar" id="bar" aria-hidden="true">
+  <a class="mark" href="#top"><i></i>Sealed</a>
+  <a class="go" href="https://apps.apple.com/gb/app/sealed/id6807351225"><svg viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>App Store</a>
+</div>
+
+<main id="top">
+  <section class="hero wrap">
+    <div class="eyebrow">Workout habit tracker</div>
+    <h1>Sealed</h1>
+    <div class="hook">Seal your day.</div>
+    <p class="lede">One wax seal a night. The impression only forms as complete as you earned. Earn the close.</p>
+
+    <div class="sealbox" id="sealbox" role="button" tabindex="0" aria-label="Hold to seal the day">
+      <div class="glow" aria-hidden="true"></div>
+      <canvas id="wax" aria-hidden="true"></canvas>
+      <span class="arc-label train">TRAIN</span>
+      <span class="arc-label fuel">FUEL</span>
+      <span class="arc-label base">BASE</span>
+    </div>
+
+    <div class="under">
+      <div class="hint" id="hint">Hold to seal</div>
+      <button class="again" id="again" type="button">Open it again</button>
+      <div class="cta" id="cta">
+        <a class="store" id="store" href="https://apps.apple.com/gb/app/sealed/id6807351225">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+          <span class="lines"><small>Download on the</small><b>App Store</b></span>
+        </a>
+        <div class="mono"><b>£3.99</b> a month · 7 days free</div>
+        <div class="mono devices"><span>iPhone</span><i></i><span>Apple Watch</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three arcs -->
+  <section class="beat">
+    <div class="wrap grid">
+      <div class="copy">
+        <div class="eyebrow dim">Three arcs feed the day</div>
+        <h2>Train. Fuel. Base.</h2>
+        <p>Each arc fills as that part of the day gets done. The wax pools and waits. <strong>Press it when you’re finished, and the impression forms as full as you earned.</strong></p>
+      </div>
+      <div class="arcs" id="arcs">
+        <div class="arc" data-p="100">
+          <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26" fill="none" stroke-width="6"/><circle class="ring-fg" cx="32" cy="32" r="26" fill="none" stroke-width="6" stroke-dasharray="163.4" stroke-dashoffset="114" transform="rotate(-90 32 32)"/></svg>
+          <div class="txt"><div class="name">TRAIN</div><div class="pct">100%</div><p>Weight × reps against your target. Hit it, tick it. Off plan? Slide in real plates — never type a number.</p></div>
+        </div>
+        <div class="arc" data-p="100">
+          <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26" fill="none" stroke-width="6"/><circle class="ring-fg" cx="32" cy="32" r="26" fill="none" stroke-width="6" stroke-dasharray="163.4" stroke-dashoffset="114" transform="rotate(-90 32 32)"/></svg>
+          <div class="txt"><div class="name">FUEL</div><div class="pct">100%</div><p>Meals ticked, not logged. The maths behind them is optional and never leaves your phone.</p></div>
+        </div>
+        <div class="arc" data-p="92">
+          <svg viewBox="0 0 64 64"><circle class="ring-bg" cx="32" cy="32" r="26" fill="none" stroke-width="6"/><circle class="ring-fg" cx="32" cy="32" r="26" fill="none" stroke-width="6" stroke-dasharray="163.4" stroke-dashoffset="114" transform="rotate(-90 32 32)"/></svg>
+          <div class="txt"><div class="name">BASE</div><div class="pct">92%</div><p>Steps, sleep, water — the signals you choose. Apple Health fills them. Zero input.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAIN, phone + wrist -->
+  <section class="beat flip">
+    <div class="wrap grid">
+      <div class="copy">
+        <div class="eyebrow dim">Train</div>
+        <h2>Hit the set? One tap.</h2>
+        <p>Your plan is already on the screen: the weight, the reps, the target. Tick it and move on. <strong>On the wrist, the crown steps in the plates your bar actually has</strong> — 1.25s on a barbell, the rack’s gaps on a dumbbell, the pin on a machine. The rest timer runs wherever you ticked. Last time’s note sits under the lift until you write today’s.</p>
+      </div>
+      <div class="trainviz">
+        <div class="setrow" id="setrow" aria-hidden="true">
+          <div class="l"><small>TARGET 110 × 6</small><b id="setstate">ON TARGET</b></div>
+          <div class="n"><b>110</b><small>KG</small></div>
+          <span class="x">×</span>
+          <div class="n"><b>6</b><small>REPS</small></div>
+          <div class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        </div>
+        <div class="shot wide"><img src="../assets/wrist.jpg" width="460" height="1000" alt="TRAIN on iPhone with the set on Apple Watch: 80 kg × 8, at target, tick" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BASE -->
+  <section class="beat">
+    <div class="wrap grid">
+      <div class="copy">
+        <div class="eyebrow dim">Base</div>
+        <h2>It fills itself.</h2>
+        <p>Pick the signals that matter to you — steps, sleep, active energy, stand hours, water, mindful minutes. Apple Health feeds them. <strong>Nothing to type, ever.</strong> A ring for each, a target for each, and the shortfall in plain units: “Sleep 1.1 short”.</p>
+      </div>
+      <div class="shot"><img src="../assets/base.jpg" width="427" height="900" alt="BASE in Sealed: six Apple Health signals as rings" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- PROGRESS -->
+  <section class="beat flip">
+    <div class="wrap grid">
+      <div class="copy">
+        <div class="eyebrow dim">Progress</div>
+        <h2>See the work.</h2>
+        <p>Body, fuel, strength. Weight and the tape. Eaten against target. Volume by week, a line for every lift. <strong>Every chart starts where your data starts</strong> — and it lives on your phone, not on a dashboard you have to visit.</p>
+      </div>
+      <div class="shot"><img src="../assets/progress.jpg" width="427" height="900" alt="PROGRESS in Sealed: fuel eaten against target and the body line" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- The pact -->
+  <section class="beat">
+    <div class="wrap grid">
+      <div class="copy">
+        <div class="eyebrow dim">The pact</div>
+        <h2>Two people. One streak.</h2>
+        <p><strong>Optional.</strong> Pair with one person by invite code and your streak only advances when you both hold. Send a pump when they need one, a message when they don’t, and see each other’s seals side by side.</p>
+        <p>Every Sunday, a short coach review of your week — the lifts, the plate, the seals — <strong>in a few honest words.</strong> Solo or paired.</p>
+      </div>
+      <div class="shot"><img src="../assets/pact.jpg" width="427" height="900" alt="This week in Sealed: the pact and the duel" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- Close -->
+  <section class="close wrap">
+    <div class="eyebrow">Seal the deal</div>
+    <h2>Earn the close.</h2>
+    <p>Press the wax when you’re done. Not before.</p>
+    <div class="stamp" id="stamp" aria-hidden="true"><span>S</span></div>
+    <a class="store" id="store2" href="https://apps.apple.com/gb/app/sealed/id6807351225">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+      <span class="lines"><small>Download on the</small><b>App Store</b></span>
+    </a>
+    <div class="mono"><b>£3.99</b> a month · 7 days free · cancel in a tap</div>
+    <div class="mono devices"><span>iPhone</span><i></i><span>Apple Watch</span></div>
+  </section>
+
+  <footer class="wrap">
+    <a href="mailto:hello@sealedapp.co.uk">hello@sealedapp.co.uk</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/support.html">Support</a>
+    <span>© 2026 Sealed</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // ---------- the seal ----------
+  var box = document.getElementById('sealbox'), canvas = document.getElementById('wax'), hint = document.getElementById('hint');
+  var again = document.getElementById('again'), store = document.getElementById('store');
+  var ctx = canvas.getContext('2d');
+  var IDLE = fine ? 'Click and hold' : 'Hold to seal';
+  hint.textContent = IDLE;
+  var ARCS = [1.0, 1.0, 0.92], EARNED = 97; // today, as the app would show it
+
+  var W = 0, dpr = 1;
+  function size() {
+    var r = box.getBoundingClientRect(); dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = Math.round(r.width); canvas.width = W * dpr; canvas.height = W * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  size(); window.addEventListener('resize', size);
+
+  var pressing = false, press = 0, sealed = false, last = 0, stamp = 0, HOLD = 1500;
+  var bubbles = []; for (var i = 0; i < 7; i++) bubbles.push({ a: Math.random() * 6.28, r: 0.25 + Math.random() * 0.5, s: 0.05 + Math.random() * 0.09, k: 0.2 + Math.random() * 0.5 });
+
+  function arc(cx, cy, r, from, to, color, width) { ctx.beginPath(); ctx.arc(cx, cy, r, from, to); ctx.strokeStyle = color; ctx.lineWidth = width; ctx.lineCap = 'round'; ctx.stroke(); }
+
+  function draw(t) {
+    var dt = last ? Math.min(t - last, 50) : 16; last = t;
+    if (pressing && !sealed) { press += dt / HOLD; if (press >= 1) { press = 1; seal(); } }
+    else if (!sealed && press > 0) { press = Math.max(0, press - dt / 500); }
+    if (sealed && stamp < 1) stamp = Math.min(1, stamp + dt / 380);
+
+    var c = W / 2, tt = t / 1000;
+    var R = sealed ? W * 0.255 : W * 0.24 + press * W * 0.045;
+    ctx.clearRect(0, 0, W, W);
+
+    var ring = W * 0.40, gap = 0.14, third = (Math.PI * 2 - gap * 3) / 3, start = -Math.PI / 2 + gap / 2;
+    for (var i = 0; i < 3; i++) {
+      var a0 = start + i * (third + gap);
+      arc(c, c, ring, a0, a0 + third, '#1c1e23', W * 0.05);
+      arc(c, c, ring, a0, a0 + third * ARCS[i], sealed ? '#5c1b22' : '#8e2a33', W * 0.05);
+    }
+
+    var amp = reduced ? 0 : (sealed ? 0 : 0.012 + press * 0.04);
+    ctx.save();
+    ctx.shadowColor = 'rgba(0,0,0,.7)'; ctx.shadowBlur = W * 0.06; ctx.shadowOffsetY = W * 0.02;
+    ctx.beginPath();
+    for (var k = 0; k <= 120; k++) {
+      var th = (k / 120) * Math.PI * 2;
+      var rr = R * (1 + amp * (Math.sin(3 * th + tt * 1.3) + 0.6 * Math.sin(5 * th - tt * 0.9) + 0.4 * Math.sin(8 * th + tt * 2.1)));
+      var x = c + rr * Math.cos(th), y = c + rr * Math.sin(th);
+      if (k === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    var g = ctx.createRadialGradient(c - R * 0.25, c - R * 0.3, R * 0.1, c, c, R * 1.05);
+    if (sealed) { g.addColorStop(0, '#7a2430'); g.addColorStop(0.6, '#5e1a22'); g.addColorStop(1, '#3d1016'); }
+    else { g.addColorStop(0, '#9c3340'); g.addColorStop(0.55, '#7a2430'); g.addColorStop(1, '#4a151b'); }
+    ctx.fillStyle = g; ctx.fill();
+    ctx.restore();
+
+    if (!sealed) {
+      ctx.save(); ctx.globalAlpha = 0.18 + press * 0.12;
+      var s = ctx.createRadialGradient(c - R * 0.35, c - R * 0.4, 0, c - R * 0.35, c - R * 0.4, R * 0.9);
+      s.addColorStop(0, '#f0c8c0'); s.addColorStop(1, 'rgba(240,200,192,0)');
+      ctx.fillStyle = s; ctx.beginPath(); ctx.arc(c, c, R, 0, 6.29); ctx.fill(); ctx.restore();
+      ctx.save(); ctx.strokeStyle = 'rgba(230,223,211,' + (0.12 + press * 0.25) + ')'; ctx.lineWidth = 1;
+      bubbles.forEach(function (b) {
+        var d = R * b.r, x = c + d * Math.cos(b.a + tt * b.s), y = c + d * Math.sin(b.a + tt * b.s) - press * R * 0.1 * b.k;
+        ctx.beginPath(); ctx.arc(x, y, W * (0.012 + b.k * 0.03) * (0.6 + press * 0.6), 0, 6.29); ctx.stroke();
+      });
+      ctx.restore();
+      ctx.save(); ctx.font = '900 ' + (W * 0.34) + 'px Georgia, "Times New Roman", serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.globalAlpha = 0.14 + press * 0.3; ctx.fillStyle = '#e6dfd3'; ctx.fillText('S', c, c + W * 0.004); ctx.restore();
+    } else {
+      var ease = 1 - Math.pow(1 - stamp, 3), sc = 1.18 - 0.18 * ease;
+      ctx.save(); ctx.translate(c, c); ctx.scale(sc, sc); ctx.globalAlpha = ease;
+      ctx.beginPath(); ctx.arc(0, 0, R * 1.06, 0, 6.29); ctx.strokeStyle = '#e0b64a'; ctx.lineWidth = W * 0.022; ctx.stroke();
+      ctx.beginPath(); ctx.arc(0, 0, R * 0.98, 0, 6.29); ctx.strokeStyle = 'rgba(0,0,0,.35)'; ctx.lineWidth = W * 0.012; ctx.stroke();
+      ctx.font = '900 ' + (W * 0.3) + 'px Georgia, "Times New Roman", serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillStyle = 'rgba(0,0,0,.5)'; ctx.fillText('S', W * 0.006, W * 0.012);
+      ctx.fillStyle = '#e0b64a'; ctx.fillText('S', 0, W * 0.004);
+      ctx.restore();
+    }
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+  function seal() {
+    sealed = true; stamp = 0;
+    box.classList.add('done'); hint.className = 'hint done'; hint.textContent = 'Sealed · ' + EARNED + '% earned';
+    store.classList.add('glow');
+    if (navigator.vibrate) navigator.vibrate([12, 40, 24]);
+    setTimeout(function () { again.classList.add('show'); }, 2200);
+  }
+  function reopen() { sealed = false; press = 0; stamp = 0; box.classList.remove('done'); hint.className = 'hint'; hint.textContent = IDLE; store.classList.remove('glow'); again.classList.remove('show'); }
+  function down(e) { if (sealed) return; pressing = true; hint.className = 'hint live'; hint.textContent = 'Keep holding…'; if (e && e.preventDefault) e.preventDefault(); try { box.setPointerCapture(e.pointerId); } catch (x) {} }
+  function up() { if (!pressing) return; pressing = false; if (!sealed) { hint.className = 'hint'; hint.textContent = press > 0.05 ? 'Not yet — hold it' : IDLE; } }
+  box.addEventListener('pointerdown', down);
+  box.addEventListener('pointerup', up); box.addEventListener('pointercancel', up); box.addEventListener('pointerleave', up);
+  box.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  box.addEventListener('keydown', function (e) { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); down({}); } });
+  box.addEventListener('keyup', function (e) { if (e.key === ' ' || e.key === 'Enter') up(); });
+  again.addEventListener('click', reopen);
+
+  // ---------- the bar, once the hero's badge has gone ----------
+  var bar = document.getElementById('bar'), cta = document.getElementById('cta');
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { bar.classList.toggle('show', !en.isIntersecting && en.boundingClientRect.top < 0); });
+  }, { threshold: 0 }).observe(cta);
+
+  // ---------- the arcs close as they come into view, one after another ----------
+  var arcs = document.querySelectorAll('#arcs .arc');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var el = en.target, p = +el.dataset.p / 100, fg = el.querySelector('.ring-fg'), i = Array.prototype.indexOf.call(arcs, el);
+      fg.style.strokeDashoffset = (163.4 * (1 - p)).toFixed(1);
+      if (p >= 1) setTimeout(function () { el.classList.add('lit'); }, 2300 + i * 350);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  arcs.forEach(function (a) { io.observe(a); });
+
+  // ---------- the phones rise as they arrive ----------
+  var rise = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); rise.unobserve(en.target); } });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('.shot').forEach(function (el) { el.classList.add('will'); rise.observe(el); });
+
+  // ---------- the set ticks itself while it's on screen ----------
+  var row = document.getElementById('setrow'), state = document.getElementById('setstate'), ticking = null;
+  function tickLoop() {
+    row.classList.add('on'); state.textContent = 'TICKED · REST 90S';
+    ticking = setTimeout(function () {
+      row.classList.remove('on'); state.textContent = 'ON TARGET';
+      ticking = setTimeout(tickLoop, 1600);
+    }, 2800);
+  }
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting && !ticking && !reduced) ticking = setTimeout(tickLoop, 700);
+      else if (!en.isIntersecting && ticking) { clearTimeout(ticking); ticking = null; }
+    });
+  }, { threshold: 0.6 }).observe(row);
+  if (reduced) { row.classList.add('on'); state.textContent = 'TICKED'; }
+
+  // ---------- the stamp lands at the close ----------
+  var stampEl = document.getElementById('stamp'), store2 = document.getElementById('store2');
+  if (!reduced) {
+    stampEl.classList.add('arm');
+    var landed = false;
+    var so = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting || landed) return; landed = true;
+        setTimeout(function () {
+          stampEl.classList.remove('arm'); stampEl.classList.add('land');
+          if (navigator.vibrate) navigator.vibrate(18);
+          setTimeout(function () { store2.classList.add('glow'); }, 420);
+        }, 250);
+        so.unobserve(stampEl);
+      });
+    }, { threshold: 0.9 });
+    so.observe(stampEl);
+  }
+})();
+</script>
+
+</body>
+</html>
