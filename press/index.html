@@ -38,6 +38,9 @@
   .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:12px; }
   .grid a { display:block; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:var(--panel); }
   .grid img { display:block; width:100%; height:auto; }
+  .films { list-style:none; padding:0; margin:12px 0 0; display:grid; gap:8px; }
+  .films li { display:flex; justify-content:space-between; gap:12px; padding:10px 14px; border:1px solid var(--line); border-radius:12px; background:var(--panel); }
+  .films span { color:var(--dim); font-family:"JetBrains Mono",monospace; font-size:12px; }
   .grid.watch { grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); }
   .row { display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap; }
   .icon { width:120px; height:120px; border-radius:27px; border:1px solid var(--line); }
@@ -143,7 +146,13 @@
 
   <section>
     <div class="eyebrow">The film</div>
-    <p>A 30-second film and three short clips. <span id="film-note">Coming with launch.</span></p>
+    <p>A 30-second film and three short clips, 1080×1920, H.264. Download and use as you like.</p>
+    <ul class="films">
+      <li><a href="assets/film/sealed-hero-30s.mp4" download>The film · 30 s</a> <span>29 MB</span></li>
+      <li><a href="assets/film/sealed-hold-to-seal.mp4" download>Hold to seal · 19 s</a> <span>18 MB</span></li>
+      <li><a href="assets/film/sealed-never-type-a-number.mp4" download>Never type a number · 15 s</a> <span>12 MB</span></li>
+      <li><a href="assets/film/sealed-it-locks-forever.mp4" download>It locks forever · 10 s</a> <span>9 MB</span></li>
+    </ul>
   </section>
 </main>
 
