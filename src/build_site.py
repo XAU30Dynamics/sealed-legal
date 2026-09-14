@@ -14,7 +14,8 @@ APPLE = ("M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 
          "3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559"
          "-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052"
          "-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701")
-IMAGES = {"wrist": "shots/04-wrist-wide.jpg", "base": "shots/06-base-phone.jpg", "progress": "shots/08-progress-phone.jpg", "pact": "shots/07-pact-phone.jpg"}
+IMAGES = {"wrist": "shots/04-wrist-wide.jpg", "watch": "shots/10-watch.jpg", "base": "shots/06-base-phone.jpg",
+          "progress": "shots/08-progress-phone.jpg", "pact": "shots/07-pact-phone.jpg"}
 FONTS = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800&family=JetBrains+Mono:wght@400;600&display=swap">'
 FAVICON = ("data:image/svg+xml," + "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E"
            "%3Ccircle cx='32' cy='32' r='30' fill='%230c0d0f'/%3E%3Ccircle cx='32' cy='32' r='22' fill='%237a2430' stroke='%23e0b64a' stroke-width='3'/%3E"
