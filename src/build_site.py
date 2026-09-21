@@ -11,7 +11,7 @@ TMPL = open(os.path.join(HERE, "site.tmpl.html"), encoding="utf-8").read()
 # The App Store link carries an App Analytics campaign token (App Store Connect →
 # App Analytics → Acquisition → Campaigns), so installs from the site show up as
 # a campaign there — no SDK, no tracker. Empty PT = the plain link.
-PT, CT = "", "site"
+PT, CT = "128594183", "site"
 STORE = "https://apps.apple.com/gb/app/sealed/id6807351225" + (f"?pt={PT}&ct={CT}&mt=8" if PT else "")
 APPLE = ("M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 "
          "1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 "
